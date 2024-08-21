@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func TestMeta(t *testing.T) { // nolint:funlen
+func TestMeta(t *testing.T) { //nolint:funlen
 	t.Parallel()
 
 	expectedDate := time.Date(2019, 8, 23, 18, 0, 0, 0, time.UTC)
@@ -37,9 +37,9 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.author.
+			// Value for xiam.li/meta.author.
 			flags: map[string]string{
-				"jdk.sh/meta.author": "Jane Doe <jdoe@example.com>",
+				"xiam.li/meta.author": "Jane Doe <jdoe@example.com>",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "Jane Doe", actual.Author)
@@ -47,34 +47,34 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.author_url that is valid.
+			// Value for xiam.li/meta.author_url that is valid.
 			flags: map[string]string{
-				"jdk.sh/meta.author_url": "https://example.com/page",
+				"xiam.li/meta.author_url": "https://example.com/page",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalURL(t, &expectedURL, actual.AuthorURL)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.author_url that causes a panic.
+			// Value for xiam.li/meta.author_url that causes a panic.
 			flags: map[string]string{
-				"jdk.sh/meta.author_url": "example.com/page",
+				"xiam.li/meta.author_url": "example.com/page",
 			},
 			panics: true,
 		},
 		{
-			// Value for jdk.sh/meta.copyright.
+			// Value for xiam.li/meta.copyright.
 			flags: map[string]string{
-				"jdk.sh/meta.copyright": "2021 Jane Doe",
+				"xiam.li/meta.copyright": "2021 Jane Doe",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "2021 Jane Doe", actual.Copyright)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.date that is valid.
+			// Value for xiam.li/meta.date that is valid.
 			flags: map[string]string{
-				"jdk.sh/meta.date": "Fri, 23 Aug 2019 11:00:00 -0700",
+				"xiam.li/meta.date": "Fri, 23 Aug 2019 11:00:00 -0700",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalTime(t, &expectedDate, actual.Date)
@@ -82,25 +82,25 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.date that causes a panic.
+			// Value for xiam.li/meta.date that causes a panic.
 			flags: map[string]string{
-				"jdk.sh/meta.date": "tomorrow",
+				"xiam.li/meta.date": "tomorrow",
 			},
 			panics: true,
 		},
 		{
-			// Value for jdk.sh/meta.desc.
+			// Value for xiam.li/meta.desc.
 			flags: map[string]string{
-				"jdk.sh/meta.desc": "Example description",
+				"xiam.li/meta.desc": "Example description",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "Example description", actual.Description)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.dev.
+			// Value for xiam.li/meta.dev.
 			flags: map[string]string{
-				"jdk.sh/meta.dev": "true",
+				"xiam.li/meta.dev": "true",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				if true != actual.Development {
@@ -109,18 +109,18 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.docs that is valid.
+			// Value for xiam.li/meta.docs that is valid.
 			flags: map[string]string{
-				"jdk.sh/meta.docs": "https://example.com/page",
+				"xiam.li/meta.docs": "https://example.com/page",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalURL(t, &expectedURL, actual.Docs)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.docs that causes a panic.
+			// Value for xiam.li/meta.docs that causes a panic.
 			flags: map[string]string{
-				"jdk.sh/meta.docs": "example.com/page",
+				"xiam.li/meta.docs": "example.com/page",
 			},
 			panics: true,
 		},
@@ -130,43 +130,43 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.license.
+			// Value for xiam.li/meta.license.
 			flags: map[string]string{
-				"jdk.sh/meta.license": "MIT",
+				"xiam.li/meta.license": "MIT",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "MIT", actual.License)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.license_url that is valid.
+			// Value for xiam.li/meta.license_url that is valid.
 			flags: map[string]string{
-				"jdk.sh/meta.license_url": "https://example.com/page",
+				"xiam.li/meta.license_url": "https://example.com/page",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalURL(t, &expectedURL, actual.LicenseURL)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.license_url that causes a panic.
+			// Value for xiam.li/meta.license_url that causes a panic.
 			flags: map[string]string{
-				"jdk.sh/meta.license_url": "example.com/page",
+				"xiam.li/meta.license_url": "example.com/page",
 			},
 			panics: true,
 		},
 		{
-			// Value for jdk.sh/meta.name.
+			// Value for xiam.li/meta.name.
 			flags: map[string]string{
-				"jdk.sh/meta.name": "demo-app",
+				"xiam.li/meta.name": "demo-app",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "demo-app", actual.Name)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.note.
+			// Value for xiam.li/meta.note.
 			flags: map[string]string{
-				"jdk.sh/meta.note": "Example note",
+				"xiam.li/meta.note": "Example note",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "Example note", actual.Note)
@@ -178,9 +178,9 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.sha that is valid.
+			// Value for xiam.li/meta.sha that is valid.
 			flags: map[string]string{
-				"jdk.sh/meta.sha": "bb2fecbb4a287ea4c1f9887ca86dd0eb7ff28ec6",
+				"xiam.li/meta.sha": "bb2fecbb4a287ea4c1f9887ca86dd0eb7ff28ec6",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "bb2fecbb4a287ea4c1f9887ca86dd0eb7ff28ec6", actual.SHA)
@@ -188,57 +188,57 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.sha that causes a panic.
+			// Value for xiam.li/meta.sha that causes a panic.
 			flags: map[string]string{
-				"jdk.sh/meta.sha": "HEAD",
+				"xiam.li/meta.sha": "HEAD",
 			},
 			panics: true,
 		},
 		{
-			// Value for jdk.sh/meta.src that is valid.
+			// Value for xiam.li/meta.src that is valid.
 			flags: map[string]string{
-				"jdk.sh/meta.src": "https://example.com/page",
+				"xiam.li/meta.src": "https://example.com/page",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalURL(t, &expectedURL, actual.Source)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.src that causes a panic.
+			// Value for xiam.li/meta.src that causes a panic.
 			flags: map[string]string{
-				"jdk.sh/meta.src": "example.com/page",
+				"xiam.li/meta.src": "example.com/page",
 			},
 			panics: true,
 		},
 		{
-			// Value for jdk.sh/meta.title.
+			// Value for xiam.li/meta.title.
 			flags: map[string]string{
-				"jdk.sh/meta.title": "Example title",
+				"xiam.li/meta.title": "Example title",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "Example title", actual.Title)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.url that is valid.
+			// Value for xiam.li/meta.url that is valid.
 			flags: map[string]string{
-				"jdk.sh/meta.url": "https://example.com/page",
+				"xiam.li/meta.url": "https://example.com/page",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalURL(t, &expectedURL, actual.URL)
 			},
 		},
 		{
-			// Value for jdk.sh/meta.url that causes a panic.
+			// Value for xiam.li/meta.url that causes a panic.
 			flags: map[string]string{
-				"jdk.sh/meta.url": "example.com/page",
+				"xiam.li/meta.url": "example.com/page",
 			},
 			panics: true,
 		},
 		{
-			// Value for jdk.sh/meta.version.
+			// Value for xiam.li/meta.version.
 			flags: map[string]string{
-				"jdk.sh/meta.version": "v1.2.3-rc.456+build.789",
+				"xiam.li/meta.version": "v1.2.3-rc.456+build.789",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "v1.2.3-rc.456+build.789", actual.Version)
@@ -250,9 +250,9 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.version.
+			// Value for xiam.li/meta.version.
 			flags: map[string]string{
-				"jdk.sh/meta.version": "v1.2.3",
+				"xiam.li/meta.version": "v1.2.3",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "v1.2.3", actual.Version)
@@ -264,9 +264,9 @@ func TestMeta(t *testing.T) { // nolint:funlen
 			},
 		},
 		{
-			// Value for jdk.sh/meta.version.
+			// Value for xiam.li/meta.version.
 			flags: map[string]string{
-				"jdk.sh/meta.version": "latest",
+				"xiam.li/meta.version": "latest",
 			},
 			assertfn: func(t *testing.T, actual *info) {
 				equalString(t, "latest", actual.Version)

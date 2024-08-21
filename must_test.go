@@ -112,7 +112,7 @@ func TestMustBool(t *testing.T) {
 	}
 }
 
-func TestMustSemver(t *testing.T) { // nolint:funlen
+func TestMustSemver(t *testing.T) { //nolint:funlen
 	t.Parallel()
 
 	tests := []struct {

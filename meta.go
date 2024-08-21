@@ -8,22 +8,23 @@
 // build. See https://pkg.go.dev/cmd/go and https://pkg.go.dev/cmd/link.
 //
 // List of variable names:
-//   jdk.sh/meta.author
-//   jdk.sh/meta.author_url
-//   jdk.sh/meta.copyright
-//   jdk.sh/meta.date
-//   jdk.sh/meta.desc
-//   jdk.sh/meta.dev
-//   jdk.sh/meta.docs
-//   jdk.sh/meta.license
-//   jdk.sh/meta.license_url
-//   jdk.sh/meta.name
-//   jdk.sh/meta.note
-//   jdk.sh/meta.sha
-//   jdk.sh/meta.src
-//   jdk.sh/meta.title
-//   jdk.sh/meta.url
-//   jdk.sh/meta.version
+//
+//	xiam.li/meta.author
+//	xiam.li/meta.author_url
+//	xiam.li/meta.copyright
+//	xiam.li/meta.date
+//	xiam.li/meta.desc
+//	xiam.li/meta.dev
+//	xiam.li/meta.docs
+//	xiam.li/meta.license
+//	xiam.li/meta.license_url
+//	xiam.li/meta.name
+//	xiam.li/meta.note
+//	xiam.li/meta.sha
+//	xiam.li/meta.src
+//	xiam.li/meta.title
+//	xiam.li/meta.url
+//	xiam.li/meta.version
 package meta
 
 import (
@@ -41,15 +42,17 @@ func Arch() string {
 // address, or optionally both.
 //
 // Variable name:
-//   jdk.sh/meta.author
+//
+//	xiam.li/meta.author
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.author=John Doe'"
-//   -ldflags "-X 'jdk.sh/meta.author=jdoe@example.com'"
-//   -ldflags "-X 'jdk.sh/meta.author=Jane Doe <jdoe@example.com>'"
+//
+//	-ldflags "-X 'xiam.li/meta.author=John Doe'"
+//	-ldflags "-X 'xiam.li/meta.author=jdoe@example.com'"
+//	-ldflags "-X 'xiam.li/meta.author=Jane Doe <jdoe@example.com>'"
 var author string
 
-var authorParsed, authorEmailParsed = mustAuthor("jdk.sh/meta.author", author)
+var authorParsed, authorEmailParsed = mustAuthor("xiam.li/meta.author", author)
 
 // Author is the name of the application author.
 func Author() string {
@@ -65,13 +68,15 @@ func AuthorEmail() string {
 // author's personal homepage or Github profile.
 //
 // Variable name:
-//   jdk.sh/meta.author_url
+//
+//	xiam.li/meta.author_url
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.author_url=https://example.com/profile'"
+//
+//	-ldflags "-X 'xiam.li/meta.author_url=https://example.com/profile'"
 var author_url string
 
-var authorURLParsed = mustURL("jdk.sh/meta.author_url", author_url)
+var authorURLParsed = mustURL("xiam.li/meta.author_url", author_url)
 
 // AuthorURL is the homepage URL for the application author.
 func AuthorURL() *u.URL {
@@ -82,12 +87,14 @@ func AuthorURL() *u.URL {
 // author or organization, sometimes prefixed with a year or year range.
 //
 // Variable name:
-//   jdk.sh/meta.copyright
+//
+//	xiam.li/meta.copyright
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.copyright=John Doe'"
-//   -ldflags "-X 'jdk.sh/meta.copyright=2021 Jane Doe'"
-//   -ldflags "-X 'jdk.sh/meta.copyright=2019-2021 Jim Doe'"
+//
+//	-ldflags "-X 'xiam.li/meta.copyright=John Doe'"
+//	-ldflags "-X 'xiam.li/meta.copyright=2021 Jane Doe'"
+//	-ldflags "-X 'xiam.li/meta.copyright=2019-2021 Jim Doe'"
 var copyright string
 
 // Copyright is the copyright for the application.
@@ -99,18 +106,20 @@ func Copyright() string {
 // formats.
 //
 // Variable name:
-//   jdk.sh/meta.date
+//
+//	xiam.li/meta.date
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.date=$(date -R)'"
-//   -ldflags "-X 'jdk.sh/meta.date=Fri, 23 Aug 2019 11:00:00 -0700'"
-//   -ldflags "-X 'jdk.sh/meta.date=$(date -Iseconds)'"
-//   -ldflags "-X 'jdk.sh/meta.date=2019-08-23T11:00:00-07:00'"
-//   -ldflags "-X 'jdk.sh/meta.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
-//   -ldflags "-X 'jdk.sh/meta.date=2019-08-23T18:00:00Z'"
+//
+//	-ldflags "-X 'xiam.li/meta.date=$(date -R)'"
+//	-ldflags "-X 'xiam.li/meta.date=Fri, 23 Aug 2019 11:00:00 -0700'"
+//	-ldflags "-X 'xiam.li/meta.date=$(date -Iseconds)'"
+//	-ldflags "-X 'xiam.li/meta.date=2019-08-23T11:00:00-07:00'"
+//	-ldflags "-X 'xiam.li/meta.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
+//	-ldflags "-X 'xiam.li/meta.date=2019-08-23T18:00:00Z'"
 var date string
 
-var dateParsed = mustTime("jdk.sh/meta.date", date)
+var dateParsed = mustTime("xiam.li/meta.date", date)
 
 // Date is the time at which the application was built.
 func Date() *time.Time {
@@ -131,10 +140,12 @@ func DateFormat(layout string) string {
 // describing what the application does.
 //
 // Variable name:
-//   jdk.sh/meta.desc
+//
+//	xiam.li/meta.desc
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.desc=A super simple demonstration application'"
+//
+//	-ldflags "-X 'xiam.li/meta.desc=A super simple demonstration application'"
 var desc string
 
 // Description is the description of the application.
@@ -147,13 +158,15 @@ func Description() string {
 // features, and should be used with caution.
 //
 // Variable name:
-//   jdk.sh/meta.dev
+//
+//	xiam.li/meta.dev
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.dev=true'"
+//
+//	-ldflags "-X 'xiam.li/meta.dev=true'"
 var dev string
 
-var devParsed = mustBool("jdk.sh/meta.dev", dev)
+var devParsed = mustBool("xiam.li/meta.dev", dev)
 
 // Development is the development status for the application.
 func Development() bool {
@@ -164,13 +177,15 @@ func Development() bool {
 // a user can find technical documentation.
 //
 // Variable name:
-//   jdk.sh/meta.docs
+//
+//	xiam.li/meta.docs
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.docs=https://example.com/demo/README.md'"
+//
+//	-ldflags "-X 'xiam.li/meta.docs=https://example.com/demo/README.md'"
 var docs string
 
-var docsParsed = mustURL("jdk.sh/meta.docs", docs)
+var docsParsed = mustURL("xiam.li/meta.docs", docs)
 
 // Docs is the documentation URL for the application.
 func Docs() *u.URL {
@@ -187,12 +202,14 @@ func Go() string {
 // that the type of license can be easily determined.
 //
 // Variable name:
-//   jdk.sh/meta.license
+//
+//	xiam.li/meta.license
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.license=Apache-2.0'"
-//   -ldflags "-X 'jdk.sh/meta.license=MIT'"
-//   -ldflags "-X 'jdk.sh/meta.license=WTFPL'"
+//
+//	-ldflags "-X 'xiam.li/meta.license=Apache-2.0'"
+//	-ldflags "-X 'xiam.li/meta.license=MIT'"
+//	-ldflags "-X 'xiam.li/meta.license=WTFPL'"
 var license string
 
 // License is the license identifier for the application.
@@ -204,13 +221,15 @@ func License() string {
 // where the verbatim license body is available.
 //
 // Variable name:
-//   jdk.sh/meta.license_url
+//
+//	xiam.li/meta.license_url
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.license_url=https://example.com/demo/LICENSE.txt'"
+//
+//	-ldflags "-X 'xiam.li/meta.license_url=https://example.com/demo/LICENSE.txt'"
 var license_url string
 
-var licenseURLParsed = mustURL("jdk.sh/meta.license_url", license_url)
+var licenseURLParsed = mustURL("xiam.li/meta.license_url", license_url)
 
 // LicenseURL is the license URL for the application.
 func LicenseURL() *u.URL {
@@ -221,10 +240,12 @@ func LicenseURL() *u.URL {
 // or for display in an error or help message.
 //
 // Variable name:
-//   jdk.sh/meta.name
+//
+//	xiam.li/meta.name
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.name=demo-app'"
+//
+//	-ldflags "-X 'xiam.li/meta.name=demo-app'"
 var name string
 
 // Name is the name of the application.
@@ -236,11 +257,13 @@ func Name() string {
 // message about the build environment, release, etc.
 //
 // Variable name:
-//   jdk.sh/meta.note
+//
+//	xiam.li/meta.note
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.note=Built on CI server ...'"
-//   -ldflags "-X 'jdk.sh/meta.note=This release is dedicated to ...'"
+//
+//	-ldflags "-X 'xiam.li/meta.note=Built on CI server ...'"
+//	-ldflags "-X 'xiam.li/meta.note=This release is dedicated to ...'"
 var note string
 
 // Note is an arbitrary message for the application.
@@ -257,14 +280,16 @@ func OS() string {
 // "long" SHA should be provided.
 //
 // Variable name:
-//   jdk.sh/meta.sha
+//
+//	xiam.li/meta.sha
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.sha=bb2fecbb4a287ea4c1f9887ca86dd0eb7ff28ec6'"
-//   -ldflags "-X 'jdk.sh/meta.sha=$(git rev-parse HEAD)'"
+//
+//	-ldflags "-X 'xiam.li/meta.sha=bb2fecbb4a287ea4c1f9887ca86dd0eb7ff28ec6'"
+//	-ldflags "-X 'xiam.li/meta.sha=$(git rev-parse HEAD)'"
 var sha string
 
-var shaParsed = mustSHA("jdk.sh/meta.sha", sha)
+var shaParsed = mustSHA("xiam.li/meta.sha", sha)
 
 // SHA is the git SHA used to build the application.
 func SHA() string {
@@ -284,13 +309,15 @@ func ShortSHA() string {
 // repository where a user can browse or clone the source code.
 //
 // Variable name:
-//   jdk.sh/meta.src
+//
+//	xiam.li/meta.src
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.src=https://example.com/demo.git'"
+//
+//	-ldflags "-X 'xiam.li/meta.src=https://example.com/demo.git'"
 var src string
 
-var srcParsed = mustURL("jdk.sh/meta.src", src)
+var srcParsed = mustURL("xiam.li/meta.src", src)
 
 // Source is the URL for the application source code.
 func Source() *u.URL {
@@ -301,10 +328,12 @@ func Source() *u.URL {
 // form of the application name.
 //
 // Variable name:
-//   jdk.sh/meta.title
+//
+//	xiam.li/meta.title
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.title=Demo Application'"
+//
+//	-ldflags "-X 'xiam.li/meta.title=Demo Application'"
 var title string
 
 // Title is the title of the application.
@@ -316,13 +345,15 @@ func Title() string {
 // user can learn more about the application.
 //
 // Variable name:
-//   jdk.sh/meta.url
+//
+//	xiam.li/meta.url
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.url=https://example.com/demo'"
+//
+//	-ldflags "-X 'xiam.li/meta.url=https://example.com/demo'"
 var url string
 
-var urlParsed = mustURL("jdk.sh/meta.url", url)
+var urlParsed = mustURL("xiam.li/meta.url", url)
 
 // URL is the homepage URL for the application.
 func URL() *u.URL {
@@ -334,12 +365,14 @@ func URL() *u.URL {
 // https://semver.org.
 //
 // Variable name:
-//   jdk.sh/meta.version
+//
+//	xiam.li/meta.version
 //
 // Examples:
-//   -ldflags "-X 'jdk.sh/meta.version=development'"
-//   -ldflags "-X 'jdk.sh/meta.version=v1.0.0'"
-//   -ldflags "-X 'jdk.sh/meta.version=$(git describe)'"
+//
+//	-ldflags "-X 'xiam.li/meta.version=development'"
+//	-ldflags "-X 'xiam.li/meta.version=v1.0.0'"
+//	-ldflags "-X 'xiam.li/meta.version=$(git describe)'"
 var version string
 
 // Version is the version slug for the application.
@@ -347,7 +380,7 @@ func Version() string {
 	return version
 }
 
-var versionMajor, versionMinor, versionPatch, versionPreRelease, versionBuild = mustSemver("jdk.sh/version", version)
+var versionMajor, versionMinor, versionPatch, versionPreRelease, versionBuild = mustSemver("xiam.li/version", version)
 
 // VersionMajor is the semver major version.
 // See https://semver.org.

@@ -44,17 +44,17 @@ func mustBool(_, raw string) bool {
 
 // semverRegex is the suggested regex for matching valid semver versions.
 // See https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string.
-var semverRegex = regexp.MustCompile(`^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`) // nolint:lll
+var semverRegex = regexp.MustCompile(`^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`) //nolint:lll
 
 // mustSemver validates that the given value is a properly formatted semver version.
 func mustSemver(_, raw string) (string, string, string, string, string) {
 	matches := semverRegex.FindStringSubmatch(strings.TrimPrefix(raw, "v"))
 	switch len(matches) {
-	case 6: // nolint:gomnd
+	case 6: //nolint:gomnd
 		return matches[1], matches[2], matches[3], matches[4], matches[5]
-	case 5: // nolint:gomnd
+	case 5: //nolint:gomnd
 		return matches[1], matches[2], matches[3], matches[4], ""
-	case 4: // nolint:gomnd
+	case 4: //nolint:gomnd
 		return matches[1], matches[2], matches[3], "", ""
 	default:
 		return "", "", "", "", ""

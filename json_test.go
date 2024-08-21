@@ -106,11 +106,11 @@ func execTestJSON(t *testing.T, args map[string]string) (*info, bool) {
 	}
 
 	// Construct a go test command line.
-	output, err := exec.Command("go", "test", "-ldflags", ldflags, "-test.run", "^TestJSON$", "-test.v", ".").Output() // nolint:gosec,lll
+	output, err := exec.Command("go", "test", "-ldflags", ldflags, "-test.run", "^TestJSON$", "-test.v", ".").Output() //nolint:gosec,lll
 	if err != nil {
 		// Error was not an exit error with the test program. Indicates an
 		// error with the test running setup itself.
-		if _, ok := err.(*exec.ExitError); !ok { // nolint:errorlint
+		if _, ok := err.(*exec.ExitError); !ok { //nolint:errorlint
 			t.Fatal(err)
 		}
 
