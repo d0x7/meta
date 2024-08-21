@@ -8,6 +8,8 @@
 
 ✨ Common application metadata for use with go build and ldflags
 
+This repository has been forked and modified from [joshdk/meta](https://github.com/joshdk/meta).
+
 ## Motivations
 
 The Go toolchain has a feature where you can specify the value for a named
