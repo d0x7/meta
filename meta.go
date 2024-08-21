@@ -59,8 +59,26 @@ func Author() string {
 	return authorParsed
 }
 
+// AuthorOr is the name of the application author, or the given default value if not set.
+func AuthorOr(defaultValue string) string {
+	if authorParsed == "" {
+		return defaultValue
+	}
+
+	return authorParsed
+}
+
 // AuthorEmail is the email address for the application author.
 func AuthorEmail() string {
+	return authorEmailParsed
+}
+
+// AuthorEmailOr is the email address for the application author, or the given default value if not set.
+func AuthorEmailOr(defaultValue string) string {
+	if authorEmailParsed == "" {
+		return defaultValue
+	}
+
 	return authorEmailParsed
 }
 
@@ -83,6 +101,15 @@ func AuthorURL() *u.URL {
 	return authorURLParsed
 }
 
+// AuthorURLOr is the homepage URL for the application author, or the given default value if not set.
+func AuthorURLOr(defaultValue string) *u.URL {
+	if authorURLParsed == nil {
+		return mustURL("xiam.li/meta.author_url", defaultValue)
+	}
+
+	return authorURLParsed
+}
+
 // copyright is the copyright for the application. Typically the name if the
 // author or organization, sometimes prefixed with a year or year range.
 //
@@ -99,6 +126,15 @@ var copyright string
 
 // Copyright is the copyright for the application.
 func Copyright() string {
+	return copyright
+}
+
+// CopyrightOr is the copyright for the application, or the given default value if not set.
+func CopyrightOr(defaultValue string) string {
+	if copyright == "" {
+		return defaultValue
+	}
+
 	return copyright
 }
 
@@ -126,11 +162,30 @@ func Date() *time.Time {
 	return dateParsed
 }
 
+// DateOr is the time at which the application was built, or the given default value if not set.
+func DateOr(defaultValue time.Time) *time.Time {
+	if dateParsed == nil {
+		return &defaultValue
+	}
+
+	return dateParsed
+}
+
 // DateFormat is the time at which the application was built, formatted using
 // the given layout.
 func DateFormat(layout string) string {
 	if dateParsed == nil {
 		return ""
+	}
+
+	return dateParsed.Format(layout)
+}
+
+// DateFormatOr is the time at which the application was built, formatted using
+// the given layout, or the given default value if not set.
+func DateFormatOr(layout string, defaultValue string) string {
+	if dateParsed == nil {
+		return defaultValue
 	}
 
 	return dateParsed.Format(layout)
@@ -150,6 +205,15 @@ var desc string
 
 // Description is the description of the application.
 func Description() string {
+	return desc
+}
+
+// DescriptionOr is the description of the application, or the given default value if not set.
+func DescriptionOr(defaultValue string) string {
+	if desc == "" {
+		return defaultValue
+	}
+
 	return desc
 }
 
@@ -192,6 +256,15 @@ func Docs() *u.URL {
 	return docsParsed
 }
 
+// DocsOr is the documentation URL for the application, or the given default value if not set.
+func DocsOr(defaultValue string) *u.URL {
+	if docsParsed == nil {
+		return mustURL("xiam.li/meta.docs", defaultValue)
+	}
+
+	return docsParsed
+}
+
 // Go is the version of the Go runtime that the application is running on.
 func Go() string {
 	return runtime.Version()
@@ -217,6 +290,15 @@ func License() string {
 	return license
 }
 
+// LicenseOr is the license identifier for the application, or the given default value if not set.
+func LicenseOr(defaultValue string) string {
+	if license == "" {
+		return defaultValue
+	}
+
+	return license
+}
+
 // license_url is a URL for the application license. Typically links to a page
 // where the verbatim license body is available.
 //
@@ -233,6 +315,15 @@ var licenseURLParsed = mustURL("xiam.li/meta.license_url", license_url)
 
 // LicenseURL is the license URL for the application.
 func LicenseURL() *u.URL {
+	return licenseURLParsed
+}
+
+// LicenseURLOr is the license URL for the application, or the given default value if not set.
+func LicenseURLOr(defaultValue string) *u.URL {
+	if licenseURLParsed == nil {
+		return mustURL("xiam.li/meta.license_url", defaultValue)
+	}
+
 	return licenseURLParsed
 }
 
@@ -253,6 +344,15 @@ func Name() string {
 	return name
 }
 
+// NameOr is the name of the application, or the given default value if not set.
+func NameOr(defaultValue string) string {
+	if name == "" {
+		return defaultValue
+	}
+
+	return name
+}
+
 // note is an arbitrary message for the application. Can be used to store a
 // message about the build environment, release, etc.
 //
@@ -268,6 +368,15 @@ var note string
 
 // Note is an arbitrary message for the application.
 func Note() string {
+	return note
+}
+
+// NoteOr is an arbitrary message for the application, or the given default value if not set.
+func NoteOr(defaultValue string) string {
+	if note == "" {
+		return defaultValue
+	}
+
 	return note
 }
 
@@ -296,6 +405,15 @@ func SHA() string {
 	return shaParsed
 }
 
+// SHAOr is the git SHA used to build the application, or the given default value if not set.
+func SHAOr(defaultValue string) string {
+	if shaParsed == "" {
+		return defaultValue
+	}
+
+	return shaParsed
+}
+
 // ShortSHA is the git "short" SHA used to build the application.
 func ShortSHA() string {
 	if shaParsed == "" {
@@ -303,6 +421,11 @@ func ShortSHA() string {
 	}
 
 	return shaParsed[:7]
+}
+
+// ShortSHAOr is the git "short" SHA used to build the application, or the given default value if not set.
+func ShortSHAOr(defaultValue string) string {
+	return SHAOr(defaultValue)[:7]
 }
 
 // src is a URL for the application source code. Typically links to a
@@ -324,6 +447,15 @@ func Source() *u.URL {
 	return srcParsed
 }
 
+// SourceOr is the URL for the application source code, or the given default value if not set.
+func SourceOr(defaultValue string) *u.URL {
+	if srcParsed == nil {
+		return mustURL("xiam.li/meta.src", defaultValue)
+	}
+
+	return srcParsed
+}
+
 // title is the title of the application. Typically a full or non-abbreviated
 // form of the application name.
 //
@@ -338,6 +470,15 @@ var title string
 
 // Title is the title of the application.
 func Title() string {
+	return title
+}
+
+// TitleOr is the title of the application, or the given default value if not set.
+func TitleOr(defaultValue string) string {
+	if title == "" {
+		return defaultValue
+	}
+
 	return title
 }
 
@@ -360,6 +501,15 @@ func URL() *u.URL {
 	return urlParsed
 }
 
+// URLOr is the homepage URL for the application, or the given default value if not set.
+func URLOr(defaultValue string) *u.URL {
+	if urlParsed == nil {
+		return mustURL("xiam.li/meta.src", defaultValue)
+	}
+
+	return urlParsed
+}
+
 // version is the version slug for the application. The value can be used to
 // point back to a specific tag or release. Supports semver, see
 // https://semver.org.
@@ -377,6 +527,18 @@ var version string
 
 // Version is the version slug for the application.
 func Version() string {
+	return version
+}
+
+// VersionOr is the version slug for the application, or the given default value if not set.
+func VersionOr(defaultValue string) string {
+	if version == "" {
+		versionMajor, versionMinor, versionPatch, versionPreRelease,
+			versionBuild = mustSemver("xiam.li/version", defaultValue)
+
+		return defaultValue
+	}
+
 	return version
 }
 
